@@ -9,14 +9,14 @@ services:
       - 8080:80
     volumes:
       - ./:/var/www/html
-      - /var/www/html/vendor/
 
-  db:
-    image: postgres
-    volumes:
-      - ./data/db:/var/lib/postgresql/data
+  postgres:
+    restart: always
+    image: sameersbn/postgresql:9.6-2
+    ports:
+      - "5432:5432"
     environment:
-      - POSTGRES_DB=bigfish
-      - POSTGRES_USER=bigfish
-      - POSTGRES_PASSWORD=bigfish
+      - DB_USER=bigfish
+      - DB_PASS=bigfish
+      - DB_NAME=bigfish
 
