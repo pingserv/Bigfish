@@ -41,8 +41,8 @@ class User extends Authenticatable
      */
     protected $casts = [
         'email_verified_at' => 'datetime',
-        'dateOfBirth' => 'date',
-        'isActive' => 'bool'
+        'dateOfBirth' => 'datetime:Y-m-d',
+        'isActive' => 'boolean'
     ];
 
     public function phoneNumber()
