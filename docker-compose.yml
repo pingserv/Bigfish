@@ -1,0 +1,26 @@
+version: '3.7'
+services:
+  app:
+    build:
+      context: .
+      dockerfile: .docker/Dockerfile
+    image: 'laravelapp'
+    ports:
+      - 8080:80
+    volumes:
+      - ./:/var/www/html
+
+  db:
+    image: postgres:9.5-alpine
+    restart: always
+    ports:
+      - 5431:5432
+    volumes:
+      - ./pgsql/init:/docker-entrypoint-initdb.d
+      - ./pgsql/pgdata:/var/lib/postgresql
+    environment:
+      - POSTGRES_PASSWORD=bigfish
+      - POSTGRES_USER=bigfish
+      - POSTGRES_DB=laraapp_db
+      - DATABASE_HOST=localhost
+      - POSTGRES_HOST_AUTH_METHOD=trust
