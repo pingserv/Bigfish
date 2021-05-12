@@ -9,7 +9,6 @@ services:
       - 8080:80
     volumes:
       - ./:/var/www/html
-    command: bash -c 'php artisan config:cache && php artisan migrate --seed'
 
   db:
     image: postgres:9.5-alpine

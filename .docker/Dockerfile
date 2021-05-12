@@ -26,3 +26,5 @@ RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local
 
 RUN chown -R www-data:www-data /var/www/html \
     && a2enmod rewrite
+
+CMD bash -c "composer install && php artisan config:cache && php artisan migrate --seed"
